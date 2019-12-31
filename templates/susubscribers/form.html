@@ -1,0 +1,27 @@
+{% load static %}
+<div class="parallax-container" style="height: 200px; ">
+    <div class="parallax"><img src="{% static 'img/subscribe.png' %}" ></div>
+</div>
+<div style="height: 40px;"></div>
+<div class="row container">
+    <form class="col s12 card no_transcation" action="{% url 'subscribe' %}" method="POST">
+      <div class="row">
+          {% csrf_token %}
+          <div style="padding: 5px 20px">
+            <h4>Subscribe</h4>
+            <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="icon_prefix" type="text" class="validate" name="email">
+            <label for="icon_prefix">Email</label>
+            <input type="hidden" name="prevous" value="{{ request.path }}">
+            </div>
+            <div class="col s12 offset-by-1">
+                <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+        

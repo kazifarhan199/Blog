@@ -1,0 +1,83 @@
+{% extends 'mybase.html' %}
+{% load static %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
+{% block above_content %}
+{% endblock %}
+
+{% block content %}
+
+<div class="parallax-container parallax-height">
+    <div class="parallax"><img src="{{ object.image.url }}" ></div>
+</div>
+
+{% if messages %}
+<div>
+    <p>
+        <ul>
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+        </ul>
+    </p>
+</div>
+{% endif %}
+
+<div class="container">
+  <h1>
+    {{ object.title }}
+  </h1>
+  <p style="font-size: 12px;" class="right">{{ object.updated_date | date:"M d, Y" }}</p>
+</div>
+
+    <div  id='write'  class = 'is-node'>
+        {{ object.body | safe }}
+    </div>
+
+
+
+
+<div class="container" id='comment-button'>
+  <a style="color: #000;text-decoration: underline;cursor: pointer;" class="right" onclick="showComments()">
+    <h4>
+      Show Comments
+    </h4>
+  </a>
+</div>
+
+
+<div id='comment-section' style="display: none;">
+  {% for comment in comments %}
+    {% include 'comments/show.html' %}
+  {% empty %}
+    <div class="container">No Comments</div>
+  {% endfor %}
+  {% include 'comments/form.html' %} 
+
+  <div  class="container" id='comment-button'>
+    <a style="color: #000;text-decoration: underline;cursor: pointer;" class="right" onclick="hideComments()">
+      <h4>
+        Hide Comments
+      </h4>
+    </a>
+  </div>  
+</div>
+<div style="height: 50px;"></div>
+
+
+<script>
+  function showComments() {
+    document.getElementById('comment-section').style.display = 'block';
+    document.getElementById('comment-button').style.display = 'none';
+  }
+  function hideComments(params) {
+    document.getElementById('comment-section').style.display = 'none';
+    document.getElementById('comment-button').style.display = 'block';
+  }
+</script>
+  {% endblock %}

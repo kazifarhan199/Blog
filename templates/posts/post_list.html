@@ -1,0 +1,41 @@
+{% extends 'mybase.html' %}
+{% load static %}
+
+{% block content %}
+<div style="height: 70px;"></div>
+<form class="container row" action="{% url 'post' %}" method="get">
+  <div class="modal-content col s9">
+    <input type="text" placeholder="Search" name='search' value='{{ search }}'>
+  </div>
+  <div class="modal-footer col s3">
+    <button type="submit" style="padding: 0xp;height: 100%;width: 100%;" class="modal-close waves-effect waves-green btn-flat right">
+      <i class="material-icons">search</i>
+    </button>
+  </div>
+</form>
+<div style="height: 40px;"></div>
+
+<div class="row container">
+    {% for object in object_list %}
+        <a href="{% url 'post_detail' object.id %}">
+            <div class="col s12 m6">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="{{ object.image.url }}" style="width: 100%;height: auto;">
+
+                  </div>
+                  <div class="card-content">
+                      <h5>{{ object }}</h5>
+                    <p>{{ object.description }}</p>
+                  </div>
+                  <!-- <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div> -->
+                </div>
+              </div>
+        </a>
+    {% endfor %}
+  </div>
+{% include 'utils/pagination.html' %}
+
+{% endblock %}

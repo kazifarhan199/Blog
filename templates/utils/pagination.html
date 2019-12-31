@@ -1,0 +1,22 @@
+<ul class="pagination center">
+    {% if page_obj.has_previous %}
+        <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}&search={{searched_for}}&sort={{sorter}}&price={{price}}&gender={{gender}}&catagory={{catagory}}"><i class="material-icons">chevron_left</i></a></li>
+    {% else %}
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+
+    {% endif %}
+    
+    {% for i in page_obj.paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="blue active"><a href="">{{ i }}</a></li>
+      {% else %}
+        <li class="waves-effect"><a href="?page={{ i }}&search={{searched_for}}&sort={{sorter}}&price={{price}}&gender={{gender}}&catagory={{catagory}}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}&search={{searched_for}}&sort={{sorter}}&price={{price}}&gender={{gender}}&catagory={{catagory}}"><i class="material-icons">chevron_right</i></a></li>
+    {% else %}
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    {% endif %}
+</ul>

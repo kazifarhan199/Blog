@@ -1,0 +1,8 @@
+{%extends 'base.html'%}
+{% block content%}
+<h1>Delete Profile</h1>
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete you'r accounts, all associated comments will also be deleted ?</p>
+    <input class="btn" type="submit" value="Confirm">
+</form>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>
+        {% block title %}
+        Titan
+        {% endblock %}
+    </title>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+
+    <!-- Nav Bar Start -->
+    <nav style="top: 0;z-index: 100;width:100%;position: fixed;">
+        <div class="nav-wrapper grey darken-4">
+            <a href="{% url 'post' %}" class="brand-logo" style="padding-left: 15px">
+                <img src="{% static 'img/rocket.png' %}" class="image-logo">
+                <!-- LOGO -->
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <!-- sidenav-right -->
+            <a class="waves-effect waves-light modal-trigger right" href="#modal1"><i class="material-icons"
+                    style="margin-right: 15px;margin-left: 15px;">search</i></a>
+
+
+            <ul class="right hide-on-med-and-down">
+                <!-- <li><a href="sass.html">Sass</a></li> -->
+
+                <li><a class="nav-itm" href='{% url "post" %}'> <i class="material-icons left">home</i>Home</a></li>
+                <!-- <li><a class="nav-itm" href='{% url "about" %}'> <i class="material-icons left">new_releases</i>About</a></li> -->
+                {% if user.is_authenticated %}
+                <li><a class="nav-itm" href='{% url "profile" %}'> <i class="material-icons left">person</i>Profile</a>
+                </li>
+                <li><a class="nav-itm" href='{% url "account_logout" %}'> <i
+                            class="material-icons left">vpn_key</i>Logout</a></li>
+
+                {% else %}
+                <li><a class="nav-itm" href='{% url "account_login" %}'> <i
+                            class="material-icons left">vpn_key</i>Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <div class="user-view" style="background: #000;height: 100px;">
+                <a href=''><img class="circle left" src="{% static 'img/rocket.png' %}"></a>
+            </div>
+        </li>
+
+
+        <li><a class="nav-itm" href='{% url "post" %}'> <i class="material-icons left">home</i>Home</a></li>
+        <!--  <li><a class="nav-itm" href='{% url "about" %}'> <i class="material-icons left">new_releases</i>About</a></li> -->
+        {% if user.is_authenticated %}
+        <li><a class="nav-itm" href='{% url "profile" %}'> <i class="material-icons left">person</i>Profile</a></li>
+        <li><a class="nav-itm" href='{% url "account_logout" %}'> <i class="material-icons left">vpn_key</i>Logout</a>
+        </li>
+
+        {% else %}
+        <li><a class="nav-itm" href='{% url "account_login" %}'> <i class="material-icons left">vpn_key</i>Login</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    <!-- Nave bar End -->
+
+    <!-- Search pop -->
+    <div id="modal1" class="modal">
+        <form action="{% url 'post' %}" method="get">
+            <div class="modal-content">
+                <p>Search</p>
+                <input type="text" placeholder="Search" name='search'>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancle</a>
+                <button type="submit" class="modal-close waves-effect waves-green btn-flat">Search</button>
+            </div>
+        </form>
+    </div>
+    <!-- End Search pop -->
+    <div style="height: 50px;"></div>
+
+    {% if messages %}
+    <center>
+        <p>
+            <ul>
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {{ message }}
+                    </li>
+                    {% endfor %}
+            </ul>
+        </p>
+    </center>
+    {% endif %}
+
+    {% block above_content %}
+
+    {% endblock %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block bellow_content %}
+    <div style="height: 50px;"></div>
+    {% include 'susubscribers/form.html' %}
+    {% endblock %}
+    <!-- Futtor starting -->
+    <footer class="page-footer grey darken-4" style="padding-bottom: 20px;">
+        <br>
+        <div class="container center">
+            <a class="grey-text text-lighten-4" href="https://github.com/KaziFarhanuddin/">KaziFarhanuddin</a>
+            © 2020 Copyright
+        </div>
+        <br>
+    </footer>
+    <!-- Futtor Ending -->
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="{% static 'js/materialize.min.js'%}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
