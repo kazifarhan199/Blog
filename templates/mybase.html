@@ -11,6 +11,10 @@
         KaziFarhanuddin
         {% endblock %}
     </title>
+    <link href="https://fonts.googleapis.com/css?family=Trade+Winds&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
+
     <!--Import materialize.css-->
     <link rel="stylesheet" href="{% static 'css/materialize.min.css'%}">
     <link rel="stylesheet" href="{% static 'css/main.css'%}">
@@ -25,9 +29,12 @@
 
     <!-- Nav Bar Start -->
     <nav style="top: 0;z-index: 100;width:100%;position: fixed;">
-        <div class="nav-wrapper grey darken-4">
-            <a href="{% url 'post' %}" class="brand-logo" style="padding-left: 15px">
-                <img src="{% static 'img/rocket.jpg' %}" class="image-logo">
+        <div class="nav-wrapper grey black">
+
+
+            <a href="{% url 'post' %}" class="brand-logo">
+                Universal Programmer
+                <!-- <img src="{% static 'img/logo.png' %}" class="image-logo"> -->
                 <!-- LOGO -->
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -83,7 +90,7 @@
         <form action="{% url 'post' %}" method="get">
             <div class="modal-content">
                 <p>Search</p>
-                <input type="text" placeholder="Search" name='search'>
+                <input type="text" placeholder="Search" name='search' value="{{ search }}">
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancle</a>
@@ -117,8 +124,8 @@
 
     {% block bellow_content %}
     <div style="height: 50px;"></div>
-    {% include 'susubscribers/form.html' %}
     {% endblock %}
+
     <!-- Futtor starting -->
     <footer class="page-footer grey darken-4" style="padding-bottom: 20px;">
         <br>

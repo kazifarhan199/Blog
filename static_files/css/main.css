@@ -1,6 +1,9 @@
 html {
   overflow-x: initial !important;
 }
+.nav-itm{
+  font-family: 'Bitter', serif !important;
+}
 
 :root {
   --bg-color: #ffffff;
@@ -212,9 +215,6 @@ p {
   font-style: italic;
 }
 
-a {
-  cursor: pointer;
-}
 
 sup.md-footnote {
   padding: 2px 4px;
@@ -720,7 +720,7 @@ a.md-print-anchor {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  zoom: 90%;
+  /* zoom: 90%; */
   text-indent: 0px;
   text-align: left;
   text-transform: none;
@@ -1225,10 +1225,6 @@ hr {
   border: 1px solid #ddd;
 }
 
-a {
-  text-decoration: none;
-  color: #1b2224c5;
-}
 
 ul,
 ol {
@@ -1675,16 +1671,48 @@ button[type='submit'] {
 }
 
 .parallax-height{
-  height: 180px ;
+  height: 200px ;
 }
 .image-logo{
-  height: 100px;
+  height: 50px;
 }
-@media screen and (max-width: 600px) {
+.brand-logo{
+  padding-left: 15px;
+  font-family: 'Trade Winds', cursive !important; 
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #7e2b77;
+  font-weight: 550;
+}
+.card-text{
+  color: rgb(99, 89, 89);
+}
+a li{
+  color: #696060;
+}
+.secondaryAction{
+  color: rgb(199, 66, 66);
+}
+@media screen and (max-width: 800px) {
   .parallax-height{
     height: 100px ;
   }
   .image-logo{
     height: 80px;
+  }
+  .brand-logo{
+    font-size: 25px !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .brand-logo{
+    font-size: 16px !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  .brand-logo{
+    font-size: 12px !important;
   }
 }
